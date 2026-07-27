@@ -101,12 +101,15 @@ jobs:
             automated
 
       - name: Report manual PR fallback
-        if: steps.update.outputs.has_changes == 'true' && steps.create_pr.outcome == 'failure'
+        if: steps.update.outputs.has_changes == 'true' && steps.create_pr.outcome == 'failure' && steps.create_pr.conclusion != 'skipped'
         env:
           REPO_NAME: ${{ github.event.repository.name }}
           OWNER: ${{ github.repository_owner }}
         run: |
-          git ls-remote --exit-code origin refs/heads/chore-dependency-updates >/dev/null
+          if ! git ls-remote --exit-code origin refs/heads/chore-dependency-updates >/dev/null; then
+            echo "Automatic PR creation failed before the dependency update branch was pushed." >&2
+            exit 1
+          fi
           {
             echo "## Dependency update branch pushed"
             echo
