@@ -108,7 +108,7 @@ export default async function decorate(block) {
       <div class="product-details__right-column">
         <div class="product-details__header"></div>
         <div class="product-details__tagline pdp-tagline" aria-label="Promotional offer"></div>
-        <div class="prodct-deailts__stock" role="status" aria-live="polite"></div>
+        <div class="prodct-details__stock" role="status" aria-live="polite"></div>
         <div class="product-details__price"></div>
         <div class="product-details__gallery"></div>
         <div class="product-details__short-description"></div>
@@ -144,10 +144,6 @@ export default async function decorate(block) {
   const $stock = fragment.querySelector('.product-details__stock');
 
   block.replaceChildren(fragment);
-  if ($tagline) {
-    $tagline.textContent = 'Free shipping on orders over $50';
-  }
-
   events.on('pdp/data', (product) => {
     if (!product) return;
     if (product.inStock) {
@@ -158,6 +154,10 @@ export default async function decorate(block) {
       $stock.className = 'product-details__stock stock-badge stock-badge--out-of-stock';
     }
   }, { eager: true });
+
+  if ($tagline) {
+    $tagline.textContent = 'Free shipping on orders over $50';
+  }
 
   const gallerySlots = {
     CarouselThumbnail: (ctx) => {
