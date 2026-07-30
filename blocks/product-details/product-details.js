@@ -123,7 +123,7 @@ export default async function decorate(block) {
         </div>
         <div class="product-details__description"></div>
         <div class="product-details__attributes"></div>
-        <div class="product-details__custom-attribute"></div>
+<!--        <div class="product-details__custom-attribute"></div>-->
       </div>
     </div>
   `);
@@ -143,9 +143,12 @@ export default async function decorate(block) {
   const $attributes = fragment.querySelector('.product-details__attributes');
   const $tagline = fragment.querySelector('.product-details__tagline');
   const $stock = fragment.querySelector('.product-details__stock');
-  const $metaTitle = fragment.querySelector('.product-details__meta-title');
+  // const $metaTitle = fragment.querySelector('.product-details__meta-title');
 
   block.replaceChildren(fragment);
+  if ($tagline) {
+    $tagline.textContent = 'Free shipping on orders over $50';
+  }
   events.on('pdp/data', (callbackProduct) => {
     if (!callbackProduct) return;
     if (callbackProduct.inStock) {
@@ -155,15 +158,15 @@ export default async function decorate(block) {
       $stock.textContent = '● Out of Stock';
       $stock.className = 'product-details__stock stock-badge stock-badge--out-of-stock';
     }
-    const value = product.metaTitle;
-    if (value) {
-      $metaTitle.innerHTML = `
-      <div class="meta-title">
-      <dt>Meta Title</dt>
-      <dd>${value}</dd>
-      </div>
-      `;
-    }
+    // const value = product.metaTitle;
+    // if (value) {
+    //   $metaTitle.innerHTML = `
+    //   <div class="meta-title">
+    //   <dt>Meta Title</dt>
+    //   <dd>${value}</dd>
+    //   </div>
+    //   `;
+    // }
   }, { eager: true });
 
   const gallerySlots = {
