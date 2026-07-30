@@ -136,11 +136,11 @@
     color: #cc00;
   }
 
-    .meta-title dt {
+    .product-details__meta-title dt {
         font-weight: 600;
         margin-top: 0.5rem;
     }
-    .meta-title dd {
+    .product-details__meta-title dd {
         margin-left: 0;
         color: #444;
     }
