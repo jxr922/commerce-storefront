@@ -26,12 +26,12 @@ overrideGQLOperations([
       `,
     ],
   },
-  // {
-  //   npm: '@dropins/storefront-pdp',
-  //   operations: [
-  //     `fragment PRODUCT_FRAGMENT on ProductView {
-  //     metaTitle
-  //   }`,
-  //   ],
-  // },
+  {
+    npm: '@dropins/storefront-pdp',
+    operations: [
+      `fragment PRODUCT_FRAGMENT on ProductView {
+      metaTitle
+    }`,
+    ],
+  },
 ]);
