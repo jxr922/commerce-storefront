@@ -18,3 +18,6 @@ scripts/__dropins__/**/*.map
 
 # Ignore scratch directory and all its contents
 scratch/*
+
+# ignore import data directory and all its contents
+industrial-catalog-import_2.0/*

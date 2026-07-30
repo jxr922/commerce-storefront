@@ -133,6 +133,15 @@
   }
 
   .stock-badge--out-of-stock {
-    color: #cc0000;
+    color: #cc00;
   }
+
+    .meta-title dt {
+        font-weight: 600;
+        margin-top: 0.5rem;
+    }
+    .meta-title dd {
+        margin-left: 0;
+        color: #444;
+    }
 }
