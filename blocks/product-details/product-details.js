@@ -109,7 +109,7 @@ export default async function decorate(block) {
         <div class="product-details__header"></div>
         <div class="product-details__tagline pdp-tagline" aria-label="Promotional offer"></div>
         <div class="product-details__stock" role="status" aria-live="polite"></div>
-                <div class="product-details__meta-title"></div>
+        <div class="product-details__meta-title"></div>
         <div class="product-details__price"></div>
         <div class="product-details__gallery"></div>
         <div class="product-details__short-description"></div>
