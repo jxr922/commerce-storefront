@@ -4,7 +4,7 @@ import { CS_FETCH_GRAPHQL, getProductLink } from '../../scripts/commerce.js';
 
 async function fetchCategoryProducts(categoryId, maxProducts) {
   const query = `
-    query GetCategoryProducts($categoryId: String!, $pageSize: Int!) {
+   query GetCategoryProducts($categoryId: String!, $pageSize: Int!) {
       productSearch(
         phrase: ""
         filter: [{ attribute: "categoryIds", eq: $categoryId }]
@@ -19,10 +19,11 @@ async function fetchCategoryProducts(categoryId, maxProducts) {
               url
               label
             }
-            price {
-              final { amount { value currency } }
-              regular { amount { value currency } }
-            }
+            ... on SimpleProductView {
+              price { 
+                final { amount { value currency } }
+              }
+            } 
           }
         }
       }
@@ -38,7 +39,7 @@ async function fetchCategoryProducts(categoryId, maxProducts) {
 
 export default async function decorate(block) {
   const {
-    'category-id': categoryId = '',
+    'category-id': categoryId = 'industrial-parts',
     heading = 'Featured Products',
     'max-products': maxProductsStr = '4',
   } = readBlockConfig(block);
